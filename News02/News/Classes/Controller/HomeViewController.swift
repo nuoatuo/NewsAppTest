@@ -15,6 +15,9 @@
  */
 
 import UIKit
+import Alamofire
+
+
 // MARK: - 类的声明
 class HomeViewController: UIViewController {
 
@@ -23,6 +26,10 @@ class HomeViewController: UIViewController {
         
         //1.设置导航栏
         setupNavigationBar()
+        
+        //2.请求数据
+        loadData()
+        
     }
     
     /*
@@ -55,3 +62,14 @@ extension HomeViewController {
         print("------")
     }
 }
+
+
+//MARK: - 网络数据请求 
+extension HomeViewController {
+    fileprivate func loadData() {
+        NetworkTools.requestData(URLString: "http://c.m.163.com/nc/article/list/T1348649079062/0-20.html", type: .get, parameters: nil) { (result : Any) in
+            print(result)
+        }
+    }
+}
+
